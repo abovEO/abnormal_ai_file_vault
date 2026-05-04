@@ -3,11 +3,13 @@ import "./App.css";
 import FileUpload from "./components/FileUpload";
 import FileList from "./components/FileList";
 import FileFilters from "./components/FileFilters";
-import { getFiles } from "./services/api";
+import StatsPanel from "./components/StatsPanel";
+import { getFiles, getStats } from "./services/api";
 
 function App() {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [stats, setStats] = useState(null);
   const [filters, setFilters] = useState({
     search: "",
     min_size: "",
@@ -31,16 +33,24 @@ function App() {
     }
   };
 
-
-
+  const loadStats = async () => {
+    try {
+      const data = await getStats();
+      setStats(data);
+    } catch (error) {
+      console.error("Error loading stats:", error);
+    }
+  };
 
   useEffect(() => {
     loadFiles();
+    loadStats();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const handleFileUploaded = () => {
     loadFiles();
+    loadStats();
   };
 
   const handleFilterChange = (newFilters) => {
@@ -51,7 +61,7 @@ function App() {
     <div className="App">
 
       <div className="App-container">
-    
+        <StatsPanel stats={stats} />
 
         <main className="main-content">
           <section className="content-block" aria-labelledby="upload-heading">
