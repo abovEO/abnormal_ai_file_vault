@@ -21,8 +21,7 @@ const FileFilters = ({ filters, onChange }) => {
   return (
     <div className="file-filters">
       <div className="filters-header">
-        <h2>Search & Filter</h2>
-        <button onClick={clearFilters} className="clear-btn">
+        <button onClick={clearFilters} className="clear-btn" type="button">
           Clear Filters
         </button>
       </div>

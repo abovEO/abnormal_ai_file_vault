@@ -1,62 +1,90 @@
 .stats-panel {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
 }
 
 .stats-panel h2 {
-  margin-bottom: 1.5rem;
-  color: #333;
-  font-size: 1.8rem;
+  margin: 0 0 1.25rem;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 1.5rem;
-  border-radius: 8px;
-  color: white;
+  background: linear-gradient(160deg, #e0f4ea 0%, #ccebdd 55%, #bde3d3 100%);
+  padding: 1.25rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(95, 155, 122, 0.18);
 }
 
 .stat-card.highlight {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(160deg, #fdf6e4 0%, #f8ecc8 50%, #f0e0b8 100%);
+  color: #5c4a28;
+  border-color: #e8d9a8;
+}
+
+.stat-card.highlight .stat-label {
+  color: rgba(92, 74, 40, 0.85);
 }
 
 .stat-card.success {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(160deg, #dff8f2 0%, #ccf0e8 55%, #bae8dc 100%);
+  color: #2d5c52;
+  border-color: #a8ddd0;
+}
+
+.stat-card.success .stat-label {
+  color: rgba(45, 92, 82, 0.88);
 }
 
 .stat-value {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+  color: var(--color-text-muted);
 }
 
-.loading {
+.stat-card.highlight .stat-value {
+  color: #6b5428;
+}
+
+.stats-panel .loading {
   text-align: center;
-  padding: 2rem;
-  color: #666;
+  padding: 2rem 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
 }
 
 @media (max-width: 768px) {
@@ -65,7 +93,6 @@
   }
 
   .stat-value {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 }
-
