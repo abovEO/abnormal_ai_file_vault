@@ -30,10 +30,6 @@ const StatsPanel = ({ stats }) => {
           <div className="stat-value">{stats.total_size_mb} MB</div>
           <div className="stat-label">Total Size</div>
         </div>
-        <div className="stat-card success">
-          <div className="stat-value">{stats.space_saved_mb} MB</div>
-          <div className="stat-label">Space Saved</div>
-        </div>
       </div>
     </div>
   );
